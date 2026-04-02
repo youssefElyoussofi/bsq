@@ -77,8 +77,8 @@ int load_map(FILE* file, t_items *items, t_map *map)
         else
             return clean(map,line,-1);
         if (i == 0)
-            map->weight = len;
-        else if (map->weight != len)
+            map->weight = read;
+        else if (map->weight != read)
             return clean(map,line,-1);
         else
         {
