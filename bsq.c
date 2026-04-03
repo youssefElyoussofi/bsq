@@ -1,5 +1,7 @@
 #include "bsq.h"
 
+
+
 int execute_bsq(FILE* file)
 {
     t_items items;
@@ -9,5 +11,7 @@ int execute_bsq(FILE* file)
     t_map map;
     if (load_map(file,&items,&map) == -1)
         return -1;
+
+    
     return 0;
 }
