@@ -19,6 +19,13 @@ typedef struct s_map
     size_t weight;
 } t_map;
 
+typedef struct s_square
+{
+    int size;
+    int i;
+    int j;
+}t_square;
+
 int execute_bsq(FILE* file);
 int load_items(FILE* file, t_items *items);
 int load_map(FILE* file, t_items *items, t_map *map);
