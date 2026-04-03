@@ -5,7 +5,7 @@ OBJ=$(SRC:.c=.o)
 NAME=bsq
 
 $(NAME):$(OBJ)
-	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
+	$(CC) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 all: $(NAME)
 

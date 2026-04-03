@@ -43,7 +43,7 @@ int check_map_items(t_map *map, t_items *items)
     while (i < map->height)
     {
         size_t j = 0;
-        while (j < map->weight)
+        while (map->map[i][j])
         {
             if (map->map[i][j] != items->empty && map->map[i][j] != items->obstacl)
                 return -1;
@@ -78,12 +78,13 @@ int load_map(FILE* file, t_items *items, t_map *map)
             return clean(map,line,-1);
         if (i == 0)
             map->weight = read;
-        else if (map->weight != read)
+        if (map->weight != read)
             return clean(map,line,-1);
-        else
+        map->map[i] = ft_strdup(line);
+        if (line)
         {
-            map->map[i] = ft_strdup(line);
             free(line);
+            line = NULL;
         }
     }
     if (check_map_items(map,items) == -1)
