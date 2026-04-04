@@ -44,11 +44,35 @@ void found_big_square(t_square *square, t_items *items, t_map *map)
             else
             {
                 int min = found_min(matrix[i - 1][j],matrix[i][j - 1],matrix[i - 1][j - 1]);
-                //.....
+                matrix[i][j] = min + 1;
+            }
+            if (matrix[i][j] > square->size)
+            {
+                square->size = matrix[i][j];
+                square->i = i - matrix[i][j] + 1;
+                square->j = j - matrix[i][j] + 1;
             }
         }
+    }    
+}
+
+void    print_square(t_square *square, t_items *items, t_map *map)
+{
+    int end_i = square->i + square->size;
+    int end_j = square->j + square->size;
+
+    for (int i = square->i; i < end_i; ++i)
+    {
+        for (int j = square->j; j < end_j; ++j)
+        {
+            map->map[i][j] = items->full;
+        }
     }
-    
+    for (size_t i = 0; i < map->height; ++i)
+    {
+        fputs(map->map[i],stdout);
+        fputs("\n",stdout);
+    }
 }
 
 int execute_bsq(FILE* file)
@@ -64,7 +88,7 @@ int execute_bsq(FILE* file)
     t_square square;
     found_big_square(&square,&items,&map);
 
-    //....
-    //....
+    print_square(&square,&items,&map);
+    clean(&map,NULL,0);
     return 0;
 }

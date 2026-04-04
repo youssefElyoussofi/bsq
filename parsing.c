@@ -89,12 +89,5 @@ int load_map(FILE* file, t_items *items, t_map *map)
     }
     if (check_map_items(map,items) == -1)
         return clean(map,NULL,-1);
-    else
-    {
-        for (size_t i = 0; i < map->height; ++i)
-        {
-            printf("%s\n",map->map[i]);
-        }
-    }
     return 0;
 }
